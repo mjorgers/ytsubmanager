@@ -1,0 +1,19 @@
+version: "3.8"
+
+services:
+  client:
+    build: ./client
+    ports:
+      - "3002:3002"
+    environment:
+      - PORT=3002
+      - REACT_APP_API_URL=http://localhost:3001
+    depends_on:
+      - server
+
+  server:
+    build: ./server
+    ports:
+      - "3001:3001"
+    environment:
+      - PORT=3001
